@@ -1,4 +1,4 @@
-FROM ac2-registry.cn-hangzhou.cr.aliyuncs.com/ac2/base:ubuntu22.04-py310
+FROM ubuntu/python:3.10-22.04_stable
 LABEL maintainer caffe-maint@googlegroups.com
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
