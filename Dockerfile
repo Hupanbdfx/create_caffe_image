@@ -37,9 +37,16 @@ RUN git clone -b ${CLONE_TAG} --depth 1 https://github.com/BVLC/caffe.git . && \
     pip install --upgrade pip && \
     cd python && for req in $(cat requirements.txt) pydot; do pip install $req; done && cd .. && \
     mkdir build && cd build && \
-    cmake -DCPU_ONLY=1 .. && \
+    cmake -DCPU_ONLY=1 \
+          -DUSE_CUDNN=0 \
+          -DUSE_OPENCV=0 \
+          -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+          -DPYTHON_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+          -DPYTHON_LIBRARY=$(python3-config --configdir)/libpython3.*.so \
+          -DINSTALL_PYTHON_BINDINGS=ON \
+          .. && \
     make -j"$(nproc)"
-
+    
 # 设置 PyCaffe 环境变量
 ENV PYCAFFE_ROOT=$CAFFE_ROOT/python
 ENV PYTHONPATH=$PYCAFFE_ROOT:$PYTHONPATH
