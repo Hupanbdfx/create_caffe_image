@@ -1,4 +1,4 @@
-FROM ubuntu/python:3.10-22.04_stable
+FROM python:3.10-slim-bookworm
 LABEL maintainer caffe-maint@googlegroups.com
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
