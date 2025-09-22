@@ -1,4 +1,4 @@
-FROM python:3.10-slim-bookworm
+FROM docker.io/library/ubuntu:20.04
 LABEL maintainer caffe-maint@googlegroups.com
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
