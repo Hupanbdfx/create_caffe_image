@@ -25,6 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 ENV CAFFE_ROOT=/opt/caffe
+ENV TZ=Asia/Shanghai
 WORKDIR $CAFFE_ROOT
 
 # FIXME: use ARG instead of ENV once DockerHub supports this
