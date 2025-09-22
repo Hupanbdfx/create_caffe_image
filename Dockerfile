@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 LABEL maintainer caffe-maint@googlegroups.com
-
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Shanghai
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         cmake \
@@ -25,8 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 ENV CAFFE_ROOT=/opt/caffe
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=Asia/Shanghai
+
 WORKDIR $CAFFE_ROOT
 
 # FIXME: use ARG instead of ENV once DockerHub supports this
