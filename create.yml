@@ -1,1 +1,28 @@
+name: Docker Image CI for prod
 
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+
+      # 构建镜像并上传到阿里云容器镜像仓库 (自行百度创建自己的镜像仓库)
+      - name: Build and push Docker images
+       # id: docker_build
+        uses: docker/build-push-action@v5.3.0
+        with:
+          context: .
+          push: true
+          tags: caffe:cpu
+          
